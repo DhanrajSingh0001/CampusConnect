@@ -20,7 +20,7 @@ function AdminApplications() {
 
     try {
       const response = await fetch(
-        "http://localhost:5000/api/applications",
+        `${import.meta.env.VITE_API_URL}/api/applications`,
         {
           method: "GET",
           headers: {
@@ -65,7 +65,7 @@ function AdminApplications() {
 
     try {
       const response = await fetch(
-        `http://localhost:5000/api/applications/${applicationId}/status`,
+        `${import.meta.env.VITE_API_URL}/api/applications/${applicationId}/status`,
         {
           method: "PUT",
 
@@ -244,6 +244,7 @@ function AdminApplications() {
         </div>
 
         <div>
+
           <span>
             Total Applications
           </span>
@@ -251,6 +252,7 @@ function AdminApplications() {
           <h2>
             {applications.length}
           </h2>
+
         </div>
 
       </div>
@@ -348,6 +350,7 @@ function AdminApplications() {
                   <div className="application-details-grid">
 
                     <div>
+
                       <span>
                         📧 Email
                       </span>
@@ -356,9 +359,11 @@ function AdminApplications() {
                         {student?.email ||
                           "N/A"}
                       </strong>
+
                     </div>
 
                     <div>
+
                       <span>
                         📍 Location
                       </span>
@@ -367,9 +372,11 @@ function AdminApplications() {
                         {opportunity?.location ||
                           "N/A"}
                       </strong>
+
                     </div>
 
                     <div>
+
                       <span>
                         📅 Applied
                       </span>
@@ -379,6 +386,7 @@ function AdminApplications() {
                           application.createdAt
                         ).toLocaleDateString()}
                       </strong>
+
                     </div>
 
                   </div>
@@ -388,6 +396,7 @@ function AdminApplications() {
                   <div className="application-status-section">
 
                     <div>
+
                       <span>
                         CURRENT STATUS
                       </span>
@@ -399,6 +408,7 @@ function AdminApplications() {
                       >
                         {application.status}
                       </strong>
+
                     </div>
 
                     <select
@@ -410,6 +420,7 @@ function AdminApplications() {
                         )
                       }
                     >
+
                       <option value="Applied">
                         Applied
                       </option>
@@ -429,6 +440,7 @@ function AdminApplications() {
                       <option value="Rejected">
                         Rejected
                       </option>
+
                     </select>
 
                   </div>

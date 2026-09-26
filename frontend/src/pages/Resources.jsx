@@ -18,16 +18,8 @@ function Resources() {
   useEffect(() => {
     const fetchResources = async () => {
       try {
-        /*
-          IMPORTANT:
-          Agar tumhare existing Resources page
-          kisi different backend endpoint se data
-          fetch kar raha hai, wahi endpoint yahan
-          use karna.
-        */
-
         const response = await fetch(
-          "http://localhost:5000/api/resources"
+          `${import.meta.env.VITE_API_URL}/api/resources`
         );
 
         const data = await response.json();

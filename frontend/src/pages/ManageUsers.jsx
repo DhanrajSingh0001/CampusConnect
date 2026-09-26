@@ -17,12 +17,15 @@ function ManageUsers() {
       return;
     }
 
-    fetch("http://localhost:5000/api/admin/users", {
-      method: "GET",
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    })
+    fetch(
+      `${import.meta.env.VITE_API_URL}/api/admin/users`,
+      {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    )
       .then((response) => {
         if (!response.ok) {
           throw new Error("Failed to fetch users");
@@ -60,7 +63,7 @@ function ManageUsers() {
 
     try {
       const response = await fetch(
-        `http://localhost:5000/api/admin/users/${id}`,
+        `${import.meta.env.VITE_API_URL}/api/admin/users/${id}`,
         {
           method: "DELETE",
           headers: {

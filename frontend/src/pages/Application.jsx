@@ -102,7 +102,7 @@ function Application() {
       formData.append("resume", resume);
 
       const response = await fetch(
-        "http://localhost:5000/api/upload/resume",
+        `${import.meta.env.VITE_API_URL}/api/upload/resume`,
         {
           method: "POST",
           headers: {
@@ -123,9 +123,6 @@ function Application() {
       }
 
       setResumeUrl(data.resumeUrl);
-
-      // Do NOT set message here.
-      // Success message is shown using resumeUrl.
 
       return true;
     } catch (error) {
@@ -179,7 +176,7 @@ function Application() {
 
     try {
       const response = await fetch(
-        "http://localhost:5000/api/applications",
+        `${import.meta.env.VITE_API_URL}/api/applications`,
         {
           method: "POST",
 

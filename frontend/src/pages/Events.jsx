@@ -16,7 +16,7 @@ function Events() {
     const fetchEvents = async () => {
       try {
         const response = await fetch(
-          "http://localhost:5000/api/events"
+          `${import.meta.env.VITE_API_URL}/api/events`
         );
 
         const data = await response.json();
@@ -60,7 +60,7 @@ function Events() {
 
     try {
       const response = await fetch(
-        `http://localhost:5000/api/events/${eventId}`,
+        `${import.meta.env.VITE_API_URL}/api/events/${eventId}`,
         {
           method: "DELETE",
           headers: {
@@ -215,7 +215,9 @@ function Events() {
         <div className="events-message">
           <div className="loading-icon">⏳</div>
           <h3>Loading Events...</h3>
-          <p>Please wait while we fetch the latest events.</p>
+          <p>
+            Please wait while we fetch the latest events.
+          </p>
         </div>
       )}
 
@@ -281,6 +283,7 @@ function Events() {
               >
 
                 <div className="event-card-top">
+
                   <span className="event-icon">
                     📅
                   </span>
@@ -288,6 +291,7 @@ function Events() {
                   <span className="event-badge">
                     Campus Event
                   </span>
+
                 </div>
 
                 <h2>{event.title}</h2>

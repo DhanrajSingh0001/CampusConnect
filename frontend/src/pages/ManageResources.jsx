@@ -18,7 +18,7 @@ function ManageResources() {
 
     try {
       const response = await fetch(
-        "http://localhost:5000/api/resources"
+        `${import.meta.env.VITE_API_URL}/api/resources`
       );
 
       const data = await response.json();
@@ -60,7 +60,7 @@ function ManageResources() {
 
     try {
       const response = await fetch(
-        `http://localhost:5000/api/resources/${resourceId}`,
+        `${import.meta.env.VITE_API_URL}/api/resources/${resourceId}`,
         {
           method: "DELETE",
           headers: {

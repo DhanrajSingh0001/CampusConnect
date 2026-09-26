@@ -36,7 +36,7 @@ function CreateOpportunity() {
 
     try {
       const response = await fetch(
-        "http://localhost:5000/api/opportunities",
+        `${import.meta.env.VITE_API_URL}/api/opportunities`,
         {
           method: "POST",
           headers: {
@@ -50,18 +50,25 @@ function CreateOpportunity() {
       const data = await response.json();
 
       if (!response.ok) {
-        alert(data.message || "Failed to create opportunity ❌");
+        alert(
+          data.message ||
+            "Failed to create opportunity ❌"
+        );
         setLoading(false);
         return;
       }
 
-      alert("Opportunity created successfully ✅");
+      alert(
+        "Opportunity created successfully ✅"
+      );
 
       navigate("/opportunities");
 
     } catch (error) {
       console.error(error);
-      alert("Backend se connection nahi ho raha ❌");
+      alert(
+        "Backend se connection nahi ho raha ❌"
+      );
     }
 
     setLoading(false);
@@ -72,7 +79,9 @@ function CreateOpportunity() {
 
       <div className="application-card">
 
-        <h1>Create Opportunity 🚀</h1>
+        <h1>
+          Create Opportunity 🚀
+        </h1>
 
         <p className="auth-subtitle">
           Create a new career opportunity
@@ -81,7 +90,10 @@ function CreateOpportunity() {
         <form onSubmit={handleSubmit}>
 
           <div className="application-input">
-            <label>Opportunity Title</label>
+
+            <label>
+              Opportunity Title
+            </label>
 
             <input
               type="text"
@@ -91,11 +103,14 @@ function CreateOpportunity() {
               onChange={handleChange}
               required
             />
+
           </div>
 
-
           <div className="application-input">
-            <label>Company</label>
+
+            <label>
+              Company
+            </label>
 
             <input
               type="text"
@@ -105,11 +120,14 @@ function CreateOpportunity() {
               onChange={handleChange}
               required
             />
+
           </div>
 
-
           <div className="application-input">
-            <label>Type</label>
+
+            <label>
+              Type
+            </label>
 
             <select
               name="type"
@@ -117,16 +135,31 @@ function CreateOpportunity() {
               onChange={handleChange}
               required
             >
-              <option value="">Select Type</option>
-              <option value="Internship">Internship</option>
-              <option value="Job">Job</option>
-              <option value="Scholarship">Scholarship</option>
+              <option value="">
+                Select Type
+              </option>
+
+              <option value="Internship">
+                Internship
+              </option>
+
+              <option value="Job">
+                Job
+              </option>
+
+              <option value="Scholarship">
+                Scholarship
+              </option>
+
             </select>
+
           </div>
 
-
           <div className="application-input">
-            <label>Location</label>
+
+            <label>
+              Location
+            </label>
 
             <input
               type="text"
@@ -136,11 +169,14 @@ function CreateOpportunity() {
               onChange={handleChange}
               required
             />
+
           </div>
 
-
           <div className="application-input">
-            <label>Description</label>
+
+            <label>
+              Description
+            </label>
 
             <textarea
               name="description"
@@ -150,8 +186,8 @@ function CreateOpportunity() {
               rows="5"
               required
             />
-          </div>
 
+          </div>
 
           <button
             type="submit"
@@ -165,10 +201,11 @@ function CreateOpportunity() {
 
         </form>
 
-
         <button
           className="application-back"
-          onClick={() => navigate("/opportunities")}
+          onClick={() =>
+            navigate("/opportunities")
+          }
         >
           ← Back to Opportunities
         </button>

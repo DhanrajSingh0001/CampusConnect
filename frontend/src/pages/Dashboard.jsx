@@ -23,7 +23,7 @@ function Dashboard() {
 
       try {
         const response = await fetch(
-          "http://localhost:5000/api/applications/my",
+          `${import.meta.env.VITE_API_URL}/api/applications/my`,
           {
             method: "GET",
             headers: {
@@ -244,6 +244,7 @@ function Dashboard() {
       >
 
         <div className="applications-heading">
+
           <div>
             <p className="section-label">
               APPLICATION TRACKER
@@ -261,6 +262,7 @@ function Dashboard() {
           >
             Find Opportunities →
           </button>
+
         </div>
 
         {/* LOADING */}
@@ -332,7 +334,8 @@ function Dashboard() {
 
                       <span className="opportunity-type">
                         {application.opportunity
-                          ?.type || "Opportunity"}
+                          ?.type ||
+                          "Opportunity"}
                       </span>
 
                       <h3>

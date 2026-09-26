@@ -35,19 +35,24 @@ function CreateEvent() {
     setMessage("");
 
     try {
-      const response = await fetch("http://localhost:5000/api/events", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify(formData),
-      });
+      const response = await fetch(
+        `${import.meta.env.VITE_API_URL}/api/events`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify(formData),
+        }
+      );
 
       const data = await response.json();
 
       if (!response.ok) {
-        setMessage(data.message || "Failed to create event ❌");
+        setMessage(
+          data.message || "Failed to create event ❌"
+        );
         setLoading(false);
         return;
       }
@@ -66,7 +71,9 @@ function CreateEvent() {
       }, 1000);
     } catch (error) {
       console.error(error);
-      setMessage("Backend se connection nahi ho raha ❌");
+      setMessage(
+        "Backend se connection nahi ho raha ❌"
+      );
     }
 
     setLoading(false);
@@ -141,13 +148,20 @@ function CreateEvent() {
             className="application-submit"
             disabled={loading}
           >
-            {loading ? "Creating..." : "Create Event →"}
+            {loading
+              ? "Creating..."
+              : "Create Event →"}
           </button>
 
         </form>
 
         {message && (
-          <p style={{ textAlign: "center", marginTop: "15px" }}>
+          <p
+            style={{
+              textAlign: "center",
+              marginTop: "15px",
+            }}
+          >
             {message}
           </p>
         )}

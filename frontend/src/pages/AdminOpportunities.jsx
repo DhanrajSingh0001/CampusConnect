@@ -11,7 +11,7 @@ function AdminOpportunities() {
   const fetchOpportunities = async () => {
     try {
       const response = await fetch(
-        "http://localhost:5000/api/opportunities"
+        `${import.meta.env.VITE_API_URL}/api/opportunities`
       );
 
       if (!response.ok) {
@@ -52,7 +52,7 @@ function AdminOpportunities() {
 
     try {
       const response = await fetch(
-        `http://localhost:5000/api/opportunities/${id}`,
+        `${import.meta.env.VITE_API_URL}/api/opportunities/${id}`,
         {
           method: "DELETE",
           headers: {

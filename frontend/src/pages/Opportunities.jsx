@@ -18,7 +18,7 @@ function Opportunities() {
     const fetchOpportunities = async () => {
       try {
         const response = await fetch(
-          "http://localhost:5000/api/opportunities"
+          `${import.meta.env.VITE_API_URL}/api/opportunities`
         );
 
         const data = await response.json();
@@ -64,7 +64,7 @@ function Opportunities() {
 
     try {
       const response = await fetch(
-        `http://localhost:5000/api/opportunities/${id}`,
+        `${import.meta.env.VITE_API_URL}/api/opportunities/${id}`,
         {
           method: "DELETE",
           headers: {
@@ -287,6 +287,7 @@ function Opportunities() {
 
       {loading && (
         <div className="opportunity-message">
+
           <div>⏳</div>
 
           <h3>
@@ -297,6 +298,7 @@ function Opportunities() {
             Please wait while we fetch the
             latest opportunities.
           </p>
+
         </div>
       )}
 
@@ -450,7 +452,7 @@ function Opportunities() {
                           )
                         }
                       >
-                        🗑️
+                        🗑️ Delete
                       </button>
                     )}
 
